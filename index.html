@@ -78,11 +78,18 @@
             let datasensor3 = myArray[3];
             let datasensor4 = myArray[4];
             let datasensor5 = myArray[5];
-            document.getElementById("val1").innerHTML = datasensor + " " + "°C";
-            document.getElementById("val2").innerHTML = datasensor1 + " " + "Rh";
-            document.getElementById("val3").innerHTML = datasensor2 + " " + "P";
-            document.getElementById("val5").innerHTML = datasensor4; + " " + "LUX";
-            document.getElementById("val6").innerHTML = datasensor5; + " " + "kΩ";
+            document.getElementById("val1").innerHTML = `${datasensor} °C`;
+            document.getElementById("val2").innerHTML = `${datasensor1} Rh`;
+            document.getElementById("val3").innerHTML = `${datasensor2} P`;
+            document.getElementById("val4").innerHTML = `${datasensor3} Mdpl`;
+            document.getElementById("val5").innerHTML = `${datasensor4} LX`;
+            document.getElementById("val6").innerHTML = datasensor5 == 1.00 ? "Safe" : "Danger"
+            // document.getElementById("bg-gas").classList.add(`${datasensor5 == 1.00 && "bg-green-50"}`)
+            // document.getElementById("bg-gas").classList.remove(`${datasensor5 == 1.00 && "bg-red-50"}`)
+            // document.getElementById("bg-gas").classList.add(`${datasensor5 !== 1.00 && "bg-red-50"}`)
+            // document.getElementById("bg-gas").classList.remove(`${datasensor5 !== 1.00 && "bg-green-50"}`)
+            // document.getElementById("text-gas").classList.add(`${datasensor5 == 1.00 ? "text-green-700" : "text-red-700"}`)
+            // document.getElementById("text-gas").classList.add(`${datasensor5 !== 1.00 ? "text-red-700" : "text-green-700"}`)
             var colorStatus;
             if (datasensor5 == "Aman") {
                 document.getElementById("colorStatus1").innerHTML = "darkgreen";
@@ -185,7 +192,7 @@
                     <img src="public/static/icons/approx-altitude.svg" alt="" width="60" height="60">
                     <figcaption>
                         <h4 class="mb-1 text-xl font-semibold text-pink-700 uppercase">APPROX ALTITUDE</h4>
-                        <p id="val4" class="text-lg text-pink-700">29,43 Mdpl</p>
+                        <p id="val4" class="text-lg text-pink-700">0 Mdpl</p>
                     </figcaption>
                 </figure>
 
@@ -193,22 +200,22 @@
                     <img src="public/static/icons/light-level.svg" alt="" width="60" height="60">
                     <figcaption>
                         <h4 class="mb-1 text-xl font-semibold text-yellow-700 uppercase">LIGHT LEVEL</h4>
-                        <p id="val5" class="text-lg text-yellow-700">29,43 LUX</p>
+                        <p id="val5" class="text-lg text-yellow-700">0 LX</p>
                     </figcaption>
                 </figure>
 
-                <figure class="px-6 h-[230px] bg-green-50 py-8 space-y-7 rounded-2xl">
+                <figure id="bg-gas" class="px-6 bg-green-50 h-[230px] py-8 space-y-7 rounded-2xl">
                     <img src="public/static/icons/gas-resistance.svg" alt="" width="60" height="60">
-                    <figcaption>
-                        <h4 class="mb-1 text-xl font-semibold text-green-700 uppercase">GAS RESISTANCE</h4>
-                        <p id="val6" class="text-lg text-green-700">29,43 kΩ</p>
+                    <figcaption id="text-gas" class="text-green-700">
+                        <h4 class="mb-1 text-xl font-semibold uppercase">GAS RESISTANCE</h4>
+                        <p id="val6" class="text-lg">Safe</p>
                     </figcaption>
                 </figure>
 
                 <div
                     class="space-y-2 lg:col-span-4 text-center text-white bg-secondary w-full h-[230px] flex justify-center flex-col rounded-2xl">
                     <h4 class="text-xl font-medium lg:text-2xl">STATUS</h4>
-                    <p class="text-2xl font-semibold lg:text-3xl">Moderate</p>
+                    <p id="status" class="text-2xl font-semibold lg:text-3xl">Moderate</p>
                 </div>
 
             </article>
