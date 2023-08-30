@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fire Sensor</title>
+    <title>Smart Safe</title>
     <link rel="stylesheet" href="public/dist/output.css">
     <link rel="icon" type="image/ico" href="public/static/logo-tech.svg" />
 
@@ -72,18 +72,17 @@
             var payload = message.payloadString;
 
             const myArray = payload.split(",");
-            let datasensor = myArray[1];
-            let datasensor1 = myArray[0];
+            let datasensor = myArray[0];
+            let datasensor1 = myArray[1];
             let datasensor2 = myArray[2];
             let datasensor3 = myArray[3];
             let datasensor4 = myArray[4];
             let datasensor5 = myArray[5];
-            document.getElementById("val1").innerHTML = datasensor + "   °C";
-            document.getElementById("val2").innerHTML = datasensor1 + "   Rh";
-            document.getElementById("val3").innerHTML = datasensor2 + "   kΩ";
-            document.getElementById("val4").innerHTML = datasensor3 + "   Mdpl";
-            document.getElementById("val5").innerHTML = datasensor4;
-            document.getElementById("val6").innerHTML = datasensor5;
+            document.getElementById("val1").innerHTML = datasensor + " " + "°C";
+            document.getElementById("val2").innerHTML = datasensor1 + " " + "Rh";
+            document.getElementById("val3").innerHTML = datasensor2 + " " + "P";
+            document.getElementById("val5").innerHTML = datasensor4; + " " + "LUX";
+            document.getElementById("val6").innerHTML = datasensor5; + " " + "kΩ";
             var colorStatus;
             if (datasensor5 == "Aman") {
                 document.getElementById("colorStatus1").innerHTML = "darkgreen";
@@ -126,6 +125,7 @@
             MQTTconnect();
         });
 
+        console.log(datasensor)
     </script>
 </head>
 
@@ -153,8 +153,7 @@
         </aside>
         <main class="pt-5 pl-24 lg:pt-10 lg:pl-28 container-custom lg:w-11/12">
             <div class="flex flex-col justify-between lg:items-center sm:flex-row">
-                <h2 class="text-2xl font-semibold lg:text-4xl text-secondary">Fire Sensor</h2>
-                <h2 class="text-lg font-semibold lg:text-3xl text-secondary">Data Hasil Sensor</h2>
+                <h2 class="text-2xl font-semibold lg:text-4xl text-secondary">Smart Safe</h2>
             </div>
             <article class="grid gap-4 my-10 sm:grid-cols-3 lg:grid-cols-5">
 
@@ -162,7 +161,7 @@
                     <img src="public/static/icons/temperature.svg" alt="" width="60" height="60">
                     <figcaption>
                         <h4 class="mb-1 text-xl font-semibold uppercase text-secondary">TEMPERATURE</h4>
-                        <p id="val1" class="text-lg text-secondary">29,43 ºC</p>
+                        <p id="val1" class="text-lg text-secondary">0 ºC</p>
                     </figcaption>
                 </figure>
 
@@ -170,7 +169,7 @@
                     <img src="public/static/icons/humidity.svg" alt="" width="60" height="60">
                     <figcaption>
                         <h4 class="mb-1 text-xl font-semibold text-gray-700 uppercase">HUMIDITY</h4>
-                        <p id="val2" class="text-lg text-gray-700">29,43 %Rh</p>
+                        <p id="val2" class="text-lg text-gray-700">0 %Rh</p>
                     </figcaption>
                 </figure>
 
@@ -178,15 +177,7 @@
                     <img src="public/static/icons/aii-pressure.svg" alt="" width="60" height="60">
                     <figcaption>
                         <h4 class="mb-1 text-xl font-semibold text-purple-700 uppercase">AIR PRESSURE</h4>
-                        <p id="val3" class="text-lg text-purple-700">12,8 P</p>
-                    </figcaption>
-                </figure>
-
-                <figure class="px-6 h-[230px] bg-green-50 py-8 space-y-7 rounded-2xl">
-                    <img src="public/static/icons/gas-resistance.svg" alt="" width="60" height="60">
-                    <figcaption>
-                        <h4 class="mb-1 text-xl font-semibold text-green-700 uppercase">GAS RESISTANCE</h4>
-                        <p id="val4" class="text-lg text-green-700">29,43 kΩ</p>
+                        <p id="val3" class="text-lg text-purple-700">0 P</p>
                     </figcaption>
                 </figure>
 
@@ -194,7 +185,7 @@
                     <img src="public/static/icons/approx-altitude.svg" alt="" width="60" height="60">
                     <figcaption>
                         <h4 class="mb-1 text-xl font-semibold text-pink-700 uppercase">APPROX ALTITUDE</h4>
-                        <p id="val5" class="text-lg text-pink-700">29,43 Mdpl</p>
+                        <p id="val4" class="text-lg text-pink-700">29,43 Mdpl</p>
                     </figcaption>
                 </figure>
 
@@ -202,7 +193,15 @@
                     <img src="public/static/icons/light-level.svg" alt="" width="60" height="60">
                     <figcaption>
                         <h4 class="mb-1 text-xl font-semibold text-yellow-700 uppercase">LIGHT LEVEL</h4>
-                        <p id="val6" class="text-lg text-yellow-700">29,43 LUX</p>
+                        <p id="val5" class="text-lg text-yellow-700">29,43 LUX</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="px-6 h-[230px] bg-green-50 py-8 space-y-7 rounded-2xl">
+                    <img src="public/static/icons/gas-resistance.svg" alt="" width="60" height="60">
+                    <figcaption>
+                        <h4 class="mb-1 text-xl font-semibold text-green-700 uppercase">GAS RESISTANCE</h4>
+                        <p id="val6" class="text-lg text-green-700">29,43 kΩ</p>
                     </figcaption>
                 </figure>
 
